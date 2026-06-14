@@ -5,7 +5,7 @@ const ALL_IDS = MATCHES.map((m) => m.id);
 
 const state = {
   professionKey: "swe",
-  reveal: false,
+  reveal: true,   // default: toggle OFF = real fixtures shown; toggle ON disguises them
   selected: new Set(ALL_IDS),
   theme: "dark",
   focusId: null,
@@ -15,7 +15,7 @@ const state = {
 function readHash() {
   const h = new URLSearchParams(location.hash.slice(1));
   if (h.get("p") && PROFESSIONS.some((p) => p.key === h.get("p"))) state.professionKey = h.get("p");
-  state.reveal = h.get("r") === "1";
+  if (h.has("r")) state.reveal = h.get("r") === "1";
   if (h.get("t") === "light") state.theme = "light";
   const s = h.get("s");
   if (s === "none") state.selected = new Set();
@@ -24,7 +24,7 @@ function readHash() {
 function writeHash() {
   const h = new URLSearchParams();
   h.set("p", state.professionKey);
-  if (state.reveal) h.set("r", "1");
+  h.set("r", state.reveal ? "1" : "0");
   if (state.theme === "light") h.set("t", "light");
   if (state.selected.size === 0) h.set("s", "none");
   else if (state.selected.size !== ALL_IDS.length) h.set("s", [...state.selected].join(","));
