@@ -174,18 +174,15 @@ svg.has-hover .node:not(.lit) .node-bg { opacity: .35; }
 }
 .footer-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .footer-dot { opacity: .5; }
-.madeby {
-  font-size: 14px; color: var(--ink); text-decoration: none; white-space: nowrap;
-  padding: 3px 10px; border: 1px solid var(--node-line); border-radius: 999px; transition: .15s;
-}
-.madeby:hover { border-color: var(--accent); color: var(--accent); }
+.credit { color: var(--ink-dim); white-space: nowrap; }
+.credit a { color: var(--ink-dim); text-decoration: none; transition: color .15s; }
+.credit a:hover { color: var(--ink); }
 
 @media (max-width: 720px) {
   .brand-text .tagline { font-size: 11.5px; max-width: 100%; }
   .controls { gap: 7px; }
   select { min-width: 150px; }
   .footer { font-size: 10.5px; justify-content: center; }
-  .madeby { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
