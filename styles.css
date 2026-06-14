@@ -61,7 +61,17 @@ select, .ctrl-btn {
 /* uniform control height across select / buttons / switch */
 select, .ctrl-btn, .switch { height: 42px; box-sizing: border-box; }
 .ctrl-btn { display: inline-flex; align-items: center; }
-select { min-width: 200px; }
+.select-wrap { position: relative; display: inline-flex; }
+select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  min-width: 200px; width: 100%; padding-right: 34px; line-height: 40px;
+}
+.select-wrap::after {
+  content: ""; position: absolute; right: 13px; top: 50%; width: 11px; height: 7px;
+  transform: translateY(-50%); pointer-events: none; background: var(--ink-dim);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
 .ctrl-btn:hover { border-color: var(--accent); transform: translateY(-1px); }
 .ctrl-btn.icon { padding: 9px 11px; }
 .ctrl-btn.primary { background: var(--accent); color: #062014; border-color: transparent; font-weight: 700; }

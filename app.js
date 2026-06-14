@@ -130,11 +130,27 @@ function doDownload() {
   celebrate();
   toast(`You're covered 🎉 ${chosen.length} meeting${chosen.length > 1 ? "s" : ""} added`);
 }
+// Copy that works on HTTP too (navigator.clipboard needs a secure context).
+async function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try { await navigator.clipboard.writeText(text); return true; } catch (e) { /* fall through */ }
+  }
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.top = "-9999px"; ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.focus(); ta.select(); ta.setSelectionRange(0, text.length);
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
 async function doShare() {
   writeHash();
-  const url = location.href;
-  try { await navigator.clipboard.writeText(url); toast("Share link copied 🔗"); }
-  catch { toast("Copy this: " + url); }
+  const ok = await copyText(location.href);
+  toast(ok ? "Link copied to clipboard 🔗" : "Couldn’t copy — copy from the address bar");
 }
 function setDisguised(disguised) {
   state.reveal = !disguised;
@@ -191,8 +207,8 @@ function init() {
   window.addEventListener("resize", () => Bracket.fit());
 }
 async function copyFrom(id, msg) {
-  try { await navigator.clipboard.writeText($(id).textContent); toast(msg + " ✅"); }
-  catch { toast("Copy failed — select the text manually"); }
+  const ok = await copyText($(id).textContent);
+  toast(ok ? "Copied to clipboard ✅" : "Copy failed — select the text manually");
 }
 
 init();
