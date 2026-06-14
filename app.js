@@ -45,7 +45,11 @@ function updateSelCount() {
   $("selcount").textContent =
     n === ALL_IDS.length ? `All ${n} matches selected` :
     n === 0 ? "No matches selected" : `${n} of ${ALL_IDS.length} matches selected`;
-  $("reveal-toggle").setAttribute("aria-pressed", String(state.reveal));
+}
+// Switch ON = disguised (reveal=false); OFF = real fixtures shown (reveal=true).
+function syncSwitch() {
+  $("disguise-toggle").checked = !state.reveal;
+  $("switch-text").textContent = state.reveal ? "👀 Revealed" : "🕵️ Disguised";
 }
 
 // ---------- profession dropdown ----------
@@ -132,14 +136,16 @@ async function doShare() {
   try { await navigator.clipboard.writeText(url); toast("Share link copied 🔗"); }
   catch { toast("Copy this: " + url); }
 }
-function toggleReveal() {
-  state.reveal = !state.reveal;
+function setDisguised(disguised) {
+  state.reveal = !disguised;
+  syncSwitch();
   $("bracket").classList.add("decoding");
   setTimeout(() => $("bracket").classList.remove("decoding"), 500);
   refreshBracket(); writeHash();
   if (panelMatchId != null && $("panel").classList.contains("open")) openPanel(panelMatchId);
-  toast(state.reveal ? "👀 Cover blown — real details shown" : "🕵️ Back undercover");
+  toast(disguised ? "🕵️ Disguised — meetings on" : "👀 Cover off — real fixtures shown");
 }
+function flipDisguise() { setDisguised(state.reveal /* currently revealed -> disguise */); }
 
 // ---------- wire up ----------
 function init() {
@@ -148,9 +154,10 @@ function init() {
   buildProfessions();
   Bracket.render($("bracket"), { professionKey: state.professionKey, reveal: state.reveal, selected: state.selected, onSelect: openPanel });
   updateSelCount();
+  syncSwitch();
 
   $("profession").addEventListener("change", (e) => { state.professionKey = e.target.value; refreshBracket(); writeHash(); if ($("panel").classList.contains("open")) openPanel(panelMatchId); });
-  $("reveal-toggle").addEventListener("click", toggleReveal);
+  $("disguise-toggle").addEventListener("change", (e) => setDisguised(e.target.checked));
   $("download").addEventListener("click", doDownload);
   $("share").addEventListener("click", doShare);
   $("theme").addEventListener("click", () => { state.theme = state.theme === "dark" ? "light" : "dark"; applyTheme(); writeHash(); });
@@ -173,7 +180,7 @@ function init() {
 
   document.addEventListener("keydown", (e) => {
     if (/input|select|textarea/i.test(e.target.tagName)) return;
-    if (e.key === "r" || e.key === "R") toggleReveal();
+    if (e.key === "r" || e.key === "R") flipDisguise();
     else if (e.key === "d" || e.key === "D") doDownload();
     else if (e.key === "f" || e.key === "F") Bracket.fit();
     else if (e.key === "+" || e.key === "=") Bracket.zoomBy(1.2);

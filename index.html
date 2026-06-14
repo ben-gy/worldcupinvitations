@@ -25,17 +25,18 @@
       <span class="brand-mark">🕵️⚽</span>
       <div class="brand-text">
         <h1>World Cup Invitations</h1>
-        <p class="tagline">Pick your job and we’ll disguise every 2026 World Cup knockout match as a believable work meeting. Flip <b>Reveal</b> to check the real fixtures, then download the lot — and watch in peace. 🤫</p>
+        <p class="tagline">Pick your job and we’ll disguise every 2026 World Cup knockout match as a believable work meeting. Toggle <b>Disguise</b> off to check the real fixtures, then download the lot — and watch in peace. 🤫</p>
       </div>
     </div>
 
     <div class="controls">
       <select id="profession" aria-label="Choose your profession"></select>
 
-      <button id="reveal-toggle" class="ctrl-btn toggle" aria-pressed="false" title="Toggle real match details (R)">
-        <span class="toggle-on">🕵️ Disguise</span>
-        <span class="toggle-off">👀 Reveal</span>
-      </button>
+      <label class="switch" title="On = meetings disguised · Off = real fixtures shown (R)">
+        <input type="checkbox" id="disguise-toggle" checked aria-label="Disguise meetings" />
+        <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>
+        <span class="switch-text" id="switch-text">🕵️ Disguised</span>
+      </label>
 
       <button id="download" class="ctrl-btn primary" title="Download calendar (D)">⬇️ Download calendar</button>
 
