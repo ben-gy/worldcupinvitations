@@ -25,15 +25,12 @@
       <span class="brand-mark">🕵️⚽</span>
       <div class="brand-text">
         <h1>World Cup Invitations</h1>
-        <p>Block your calendar. Watch in peace.</p>
+        <p class="tagline">Pick your job and we’ll disguise every 2026 World Cup knockout match as a believable work meeting. Flip <b>Reveal</b> to check the real fixtures, then download the lot — and watch in peace. 🤫</p>
       </div>
     </div>
 
     <div class="controls">
-      <label class="ctrl">
-        <span class="ctrl-label">Your cover</span>
-        <select id="profession" aria-label="Choose your profession"></select>
-      </label>
+      <select id="profession" aria-label="Choose your profession"></select>
 
       <button id="reveal-toggle" class="ctrl-btn toggle" aria-pressed="false" title="Toggle real match details (R)">
         <span class="toggle-on">🕵️ Disguise</span>
@@ -94,9 +91,12 @@
   <canvas class="confetti" id="confetti"></canvas>
 
   <footer class="footer">
-    <span>Made for football fans with too many meetings. Not affiliated with FIFA. Slots fill in once the group stage ends.</span>
-    <span class="footer-dot">·</span>
-    <span>32 knockout matches · USA 🇺🇸 Canada 🇨🇦 Mexico 🇲🇽 · 2026</span>
+    <span class="footer-meta">
+      <span>Made for football fans with too many meetings. Not affiliated with FIFA. Slots fill in once the group stage ends.</span>
+      <span class="footer-dot">·</span>
+      <span>32 knockout matches · USA 🇺🇸 Canada 🇨🇦 Mexico 🇲🇽 · 2026</span>
+    </span>
+    <a class="madeby chicago-font" href="https://ben.gy" target="_blank" rel="noopener noreferrer">Made by ben.gy</a>
   </footer>
 
   <script src="data/matches.js"></script>

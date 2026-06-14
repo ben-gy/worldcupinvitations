@@ -1,3 +1,11 @@
+/* ===== Chicago font (matches other ben.gy sites) ===== */
+@font-face {
+  font-family: 'Chicago';
+  src: url('ChicagoFLF.woff2') format('woff2');
+  font-weight: normal; font-style: normal; font-display: swap;
+}
+.chicago-font { font-family: 'Chicago', 'Geneva', system-ui, sans-serif; letter-spacing: .5px; }
+
 /* ===== Theme ===== */
 :root {
   --bg: #0c1322;
@@ -40,7 +48,8 @@ body {
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-mark { font-size: 30px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.4)); }
 .brand-text h1 { font-size: 19px; margin: 0; letter-spacing: -.02em; }
-.brand-text p { margin: 2px 0 0; font-size: 12px; color: var(--ink-dim); }
+.brand-text .tagline { margin: 3px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--ink-dim); max-width: 560px; }
+.brand-text .tagline b { color: var(--ink); font-weight: 600; }
 
 .controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .ctrl { display: flex; flex-direction: column; gap: 2px; }
@@ -159,17 +168,24 @@ svg.has-hover .node:not(.lit) .node-bg { opacity: .35; }
 
 /* ===== Footer ===== */
 .footer {
-  display: flex; align-items: center; gap: 10px; justify-content: center; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; justify-content: space-between; flex-wrap: wrap;
   padding: 8px 16px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--ink-dim);
   background: var(--bg-2);
 }
+.footer-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .footer-dot { opacity: .5; }
+.madeby {
+  font-size: 14px; color: var(--ink); text-decoration: none; white-space: nowrap;
+  padding: 3px 10px; border: 1px solid var(--node-line); border-radius: 999px; transition: .15s;
+}
+.madeby:hover { border-color: var(--accent); color: var(--accent); }
 
 @media (max-width: 720px) {
-  .brand-text p { display: none; }
+  .brand-text .tagline { font-size: 11.5px; max-width: 100%; }
   .controls { gap: 7px; }
   select { min-width: 150px; }
-  .footer { font-size: 10.5px; }
+  .footer { font-size: 10.5px; justify-content: center; }
+  .madeby { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
