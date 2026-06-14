@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>World Cup Invitations 🕵️⚽ — Block your calendar, watch in peace</title>
+  <meta name="description" content="Pick your job. Get believable fake meeting invites for every 2026 World Cup knockout match. Download one calendar file. Watch the football. Nobody suspects a thing." />
+
+  <!-- Open Graph / Twitter (clean link unfurls for HN/X) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="World Cup Invitations 🕵️⚽" />
+  <meta property="og:description" content="Disguise every 2026 World Cup knockout match as a boring work meeting. Download a calendar. Watch in peace." />
+  <meta property="og:url" content="https://26wc.ben.gy" />
+  <meta property="og:image" content="https://26wc.ben.gy/og.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="World Cup Invitations 🕵️⚽" />
+  <meta name="twitter:description" content="Disguise every 2026 World Cup knockout match as a boring work meeting." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕵️</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🕵️⚽</span>
+      <div class="brand-text">
+        <h1>World Cup Invitations</h1>
+        <p>Block your calendar. Watch in peace.</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <label class="ctrl">
+        <span class="ctrl-label">Your cover</span>
+        <select id="profession" aria-label="Choose your profession"></select>
+      </label>
+
+      <button id="reveal-toggle" class="ctrl-btn toggle" aria-pressed="false" title="Toggle real match details (R)">
+        <span class="toggle-on">🕵️ Disguise</span>
+        <span class="toggle-off">👀 Reveal</span>
+      </button>
+
+      <button id="download" class="ctrl-btn primary" title="Download calendar (D)">⬇️ Download calendar</button>
+
+      <button id="share" class="ctrl-btn" title="Copy a shareable link">🔗 Share</button>
+      <button id="theme" class="ctrl-btn icon" title="Toggle light / dark">🌙</button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <div class="stage-tools">
+      <div class="selcount" id="selcount">All 32 matches selected</div>
+      <div class="sel-actions">
+        <button id="select-all" class="mini">Select all</button>
+        <button id="select-none" class="mini">None</button>
+      </div>
+      <div class="zoom">
+        <button id="zoom-out" class="mini" title="Zoom out (-)">−</button>
+        <button id="zoom-fit" class="mini" title="Fit (F)">Fit</button>
+        <button id="zoom-in" class="mini" title="Zoom in (+)">＋</button>
+      </div>
+    </div>
+
+    <div class="canvas" id="canvas">
+      <svg id="bracket" aria-label="2026 World Cup knockout bracket"></svg>
+      <div class="hint">drag to pan · scroll to zoom · click a match</div>
+    </div>
+  </main>
+
+  <!-- Invite side panel -->
+  <aside class="panel" id="panel" aria-hidden="true">
+    <div class="panel-head">
+      <span class="panel-round" id="panel-round"></span>
+      <button class="panel-close" id="panel-close" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-card" id="panel-card">
+      <div class="stamp">CLASSIFIED</div>
+      <h2 class="panel-title" id="panel-title"></h2>
+      <div class="panel-loc" id="panel-loc"></div>
+      <pre class="panel-desc" id="panel-desc"></pre>
+    </div>
+    <div class="panel-real" id="panel-real"></div>
+    <label class="panel-include">
+      <input type="checkbox" id="panel-include-cb" checked />
+      <span>Include in my calendar download</span>
+    </label>
+    <div class="panel-copy">
+      <button class="mini" id="copy-title">Copy title</button>
+      <button class="mini" id="copy-desc">Copy description</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <canvas class="confetti" id="confetti"></canvas>
+
+  <footer class="footer">
+    <span>Made for football fans with too many meetings. Not affiliated with FIFA. Slots fill in once the group stage ends.</span>
+    <span class="footer-dot">·</span>
+    <span>32 knockout matches · USA 🇺🇸 Canada 🇨🇦 Mexico 🇲🇽 · 2026</span>
+  </footer>
+
+  <script src="data/matches.js"></script>
+  <script src="data/professions.js"></script>
+  <script src="invites.js"></script>
+  <script src="ics.js"></script>
+  <script src="bracket.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

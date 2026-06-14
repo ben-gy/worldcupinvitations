@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="-10%" r="120%">
+      <stop offset="0%" stop-color="#111c32"/>
+      <stop offset="100%" stop-color="#0c1322"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="80" y="180" font-family="Inter, system-ui, sans-serif" font-size="120">🕵️⚽</text>
+  <text x="80" y="320" font-family="Inter, system-ui, sans-serif" font-size="76" font-weight="800" fill="#eaf1ff">World Cup Invitations</text>
+  <text x="80" y="392" font-family="Inter, system-ui, sans-serif" font-size="40" fill="#34d399" font-weight="700">Block your calendar. Watch in peace.</text>
+  <text x="80" y="470" font-family="Inter, system-ui, sans-serif" font-size="30" fill="#9fb0cf">Disguise every 2026 knockout match as a boring work meeting.</text>
+  <text x="80" y="514" font-family="Inter, system-ui, sans-serif" font-size="30" fill="#9fb0cf">Pick your job · download one calendar · nobody suspects a thing.</text>
+  <text x="80" y="588" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#f5c518" font-weight="700">26wc.ben.gy</text>
+</svg>
