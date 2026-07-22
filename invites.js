@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Ben Richardson — https://benrichardson.dev
+// Additional terms under AGPL-3.0 section 7(b) apply; see ADDITIONAL-TERMS.md.
 // invites.js — turns a football match into a believable (and unique) fake meeting,
 // or into its real reveal. Everything here is deterministic: the same match + profession
 // always produces the same disguise, so re-rendering never reshuffles the text.
